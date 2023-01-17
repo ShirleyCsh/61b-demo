@@ -26,7 +26,6 @@ public class ArithmeticTest {
     @Order(1)
     @DisplayName("Test sum correctness")
     public void testSum() {
-        System.setProperty("com.google.common.truth.disable_stack_trace_cleaning", "true");
         assertThat(Arithmetic.sum(5, 6)).isEqualTo(11);
         assertThat(Arithmetic.sum(5, -6)).isEqualTo(-1);
         assertThat(Arithmetic.sum(0, -6)).isEqualTo(-6);
