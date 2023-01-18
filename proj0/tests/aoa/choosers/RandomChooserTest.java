@@ -15,7 +15,7 @@ public class RandomChooserTest {
     public static final String EXAMPLE_FILE = "data/example.txt";
 
     @Test
-    public void testBasic() {
+    public void testThatSelectedWordIsInDictionary() {
         RandomChooser rc = new RandomChooser(4, EXAMPLE_FILE);
         List<String> words = FileUtils.readWordsOfLength(EXAMPLE_FILE, 4);
         String word = rc.getWord();
@@ -27,6 +27,20 @@ public class RandomChooserTest {
 
         //Tests the initial pattern.
         assertThat(pattern).isEqualTo("----");
+    }
+
+    @Test
+    public void testThatCorrectWordIsSelected() {
+        StdRandom.setSeed(8041961);
+        RandomChooser rc = new RandomChooser(4, EXAMPLE_FILE);
+        List<String> words = FileUtils.readWordsOfLength(EXAMPLE_FILE, 4);
+        String word = rc.getWord();
+        assertThat(word).isEqualTo("cool");
+
+        StdRandom.setSeed(6141946);
+        rc = new RandomChooser(4, EXAMPLE_FILE);
+        word = rc.getWord();
+        assertThat(word).isEqualTo("good");
     }
 
     @Test

@@ -47,14 +47,14 @@ public class PatternAwareLetterFreqGuesserTest {
 
         // check that the first guess is a, the most common letter in the dictionary if the last letter is l.
         char guess = palfg.getGuess("---l", List.of('l'));
-        assertThat(guess).isEqualTo('a');
+        assertThat(guess).isEqualTo('o');
 
         // check that the next guess is c.
-        guess = palfg.getGuess("---l", List.of('l', 'a'));
-        assertThat(guess).isEqualTo('c');
+        guess = palfg.getGuess("---l", List.of('l', 'o'));
+        assertThat(guess).isEqualTo('a');
 
-        // check that the next guess is e, if the previous guessers were l, a, c, d.
-        guess = palfg.getGuess("---l", List.of('l', 'a', 'c', 'd'));
-        assertThat(guess).isEqualTo('e');
+        // check that the next guess is e, if the previous guessers were l, o, a.
+        guess = palfg.getGuess("--al", List.of('l', 'o', 'a'));
+        assertThat(guess).isEqualTo('d');
     }
 }
