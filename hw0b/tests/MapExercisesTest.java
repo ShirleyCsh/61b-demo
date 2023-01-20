@@ -1,5 +1,3 @@
-package hw0b.basics;
-
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

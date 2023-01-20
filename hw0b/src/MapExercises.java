@@ -1,5 +1,3 @@
-package hw0b.basics;
-
 import java.util.List;
 import java.util.Map;
 
