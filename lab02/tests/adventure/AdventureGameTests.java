@@ -15,7 +15,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 @CaptureSystemOutput
 public class AdventureGameTests {
-    public static final String PREFIX_PATH = "data/";
+    public static final String PREFIX_PATH = "tests/data/";
 
     public static final Map<String, Integer> STAGE_TO_LINE_CORRECT = Map.of(
             "BeeCountingStage", 14,
