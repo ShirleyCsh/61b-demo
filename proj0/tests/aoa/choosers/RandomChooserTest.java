@@ -2,6 +2,8 @@ package aoa.choosers;
 
 import aoa.utils.FileUtils;
 import edu.princeton.cs.algs4.StdRandom;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
@@ -14,6 +16,8 @@ public class RandomChooserTest {
     public static final String DICTIONARY_FILE = "data/sorted_scrabble.txt";
     public static final String EXAMPLE_FILE = "data/example.txt";
 
+    @Order(1)
+    @DisplayName("RandomChooser has the correct initial pattern")
     @Test
     public void testThatSelectedWordIsInDictionary() {
         RandomChooser rc = new RandomChooser(4, EXAMPLE_FILE);
@@ -29,6 +33,8 @@ public class RandomChooserTest {
         assertThat(pattern).isEqualTo("----");
     }
 
+    @Order(2)
+    @DisplayName("RandomChooser selects correct word with seed")
     @Test
     public void testThatCorrectWordIsSelected() {
         StdRandom.setSeed(8041961);
@@ -43,6 +49,8 @@ public class RandomChooserTest {
         assertThat(word).isEqualTo("good");
     }
 
+    @Order(3)
+    @DisplayName("RandomChooser pattern doesn't change with wrong guess")
     @Test
     public void testWrongGuess() {
         RandomChooser rc = new RandomChooser(4, EXAMPLE_FILE);
@@ -54,6 +62,8 @@ public class RandomChooserTest {
         assertThat(pattern).isEqualTo("----");
     }
 
+    @Order(4)
+    @DisplayName("RandomChooser pattern updates correctly with right guesses")
     @Test
     public void testCorrectGuesses() {
         RandomChooser rc = new RandomChooser(4, EXAMPLE_FILE);
@@ -68,15 +78,17 @@ public class RandomChooserTest {
         String pattern = rc.getPattern();
         assertThat(pattern.charAt(i)).isEqualTo(firstGuess);
 
-        // Make second guess, either second or third letter of word
-        char secondGuess = word.charAt(i + 1);
+        // Make second guess, either third or fourth letter of word
+        char secondGuess = word.charAt(i + 2);
         numRevealed = rc.makeGuess(secondGuess);
 
         assertThat(numRevealed).isGreaterThan(0);
         pattern = rc.getPattern();
-        assertThat(pattern.charAt(i + 1)).isEqualTo(secondGuess);
+        assertThat(pattern.charAt(i + 2)).isEqualTo(secondGuess);
     }
 
+    @Order(5)
+    @DisplayName("RandomChooser returns correct number of occurrences of characters")
     @Test
     public void testReturnedOccurrences() {
         RandomChooser rc = new RandomChooser(4, "data/example-ea.txt");
@@ -100,18 +112,24 @@ public class RandomChooserTest {
         assertThat(thirdPattern).isEqualTo("-ea-");
     }
 
+    @Order(6)
+    @DisplayName("RandomChooser throws exception for negative word length")
     @Test
     @Timeout(1)
     public void testRCNegativeLength() {
         assertThrows(IllegalArgumentException.class, () -> new RandomChooser(-1, DICTIONARY_FILE));
     }
 
+    @Order(7)
+    @DisplayName("RandomChooser throws exception for max int word length")
     @Test
     @Timeout(1)
     public void testRCLargeLength() {
         assertThrows(IllegalStateException.class, () -> new RandomChooser(Integer.MAX_VALUE, DICTIONARY_FILE));
     }
 
+    @Order(8)
+    @DisplayName("RandomChooser throws exception for non-existent word length")
     @Test
     @Timeout(1)
     public void testRCMedLength() {

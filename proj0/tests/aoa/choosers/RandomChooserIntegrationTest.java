@@ -45,7 +45,7 @@ public class RandomChooserIntegrationTest {
                     "{seed = 1337, word length = 3, max wrong guesses = 26, guesses = abcdefghijklmnopqrstuvwxyz}",
                     "{seed = 1337, word length = 3, max wrong guesses = 10, guesses = abcdefghijklmnopqrstuvwxyz}",
                     "{seed = 2, word length = 3, max wrong guesses = 10, guesses = abcdefghijklmnopqrstuvwxyz}",
-                    "{seed = 44, word length = 7, max wrong guesses = 6, guesses = debatsabcdefghijklmnopqrstuvwxyz}",
+                    "{seed = 44, word length = 7, max wrong guesses = 6, guesses = debatsacfghijklmnopqruvwxyz}",
                     "{seed = 6, word length = 20, max wrong guesses = 16, guesses = aeioubcdfghjklmnpqrstvwxyz}",
                     "{seed = 19, word length = 14, max wrong guesses = 1, guesses = aeiou}",
                     "{seed = 19, word length = 14, max wrong guesses = 26, guesses = abcdefghijklmnopqrstuvwxyz}",

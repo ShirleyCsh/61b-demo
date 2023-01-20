@@ -1,5 +1,7 @@
 package aoa.choosers;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
@@ -11,6 +13,8 @@ public class EvilChooserTest {
     public static final String DICTIONARY_FILE = "data/sorted_scrabble.txt";
     public static final String EXAMPLE_FILE = "data/example.txt";
 
+    @Order(1)
+    @DisplayName("EvilChooser constructor sets blank pattern")
     @Test
     public void testBasic() {
         EvilChooser ec = new EvilChooser(4, EXAMPLE_FILE);
@@ -20,6 +24,8 @@ public class EvilChooserTest {
         assertThat(pattern).isEqualTo("----");
     }
 
+    @Order(2)
+    @DisplayName("EvilChooser executes test case from spec")
     @Test
     public void testSpec() {
         // Tests the case that is detailed in the spec.
@@ -46,7 +52,8 @@ public class EvilChooserTest {
         assertThat(last).isEqualTo(1);
     }
 
-
+    @Order(3)
+    @DisplayName("EvilChooser executes case with larger word length")
     @Test
     public void testBiggerCase() {
         // Tests the case that is detailed in the spec.
@@ -125,18 +132,24 @@ public class EvilChooserTest {
         assertThat(eighteenth).isEqualTo(2);
     }
 
+    @Order(4)
+    @DisplayName("EvilChooser throws exception for negative word length")
     @Test
     @Timeout(1)
     public void testECNegativeLength() {
         assertThrows(IllegalArgumentException.class, () -> new EvilChooser(-1, DICTIONARY_FILE));
     }
 
+    @Order(5)
+    @DisplayName("EvilChooser throws exception for max int word length")
     @Test
     @Timeout(1)
     public void testECLargeLength() {
         assertThrows(IllegalStateException.class, () -> new EvilChooser(Integer.MAX_VALUE, DICTIONARY_FILE));
     }
 
+    @Order(6)
+    @DisplayName("EvilChooser throws exception for non-existent word length")
     @Test
     @Timeout(1)
     public void testECMedLength() {

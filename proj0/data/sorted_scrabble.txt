@@ -50016,6 +50016,7 @@ hangfire
 hangfires
 hanging
 hangings
+hangman
 hangmen
 hangnail
 hangnails

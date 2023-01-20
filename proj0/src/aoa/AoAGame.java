@@ -12,7 +12,7 @@ public class AoAGame {
     private static final String DICTIONARY_FILE = "data/example.txt";
 
     public static void main(String[] args) throws FileNotFoundException {
-        System.out.println("Welcome to the Awakening of Azazoth.");
+        System.out.println("Welcome to the Awakening of Azathoth.");
         System.out.println();
 
         // set basic parameters
@@ -97,9 +97,9 @@ public class AoAGame {
     // reports the results of the game, including showing the answer
     public static void showResults(Chooser chooser) {
         if (!chooser.getPattern().contains("-")) {
-            System.out.println("'" + chooser.getWord() + "' was my word! Azazoth resumes its slumber.");
+            System.out.println("'" + chooser.getWord() + "' was my word! Azathoth resumes its slumber.");
         } else {
-            System.out.println("Azazoth awakens. You lose!");
+            System.out.println("Azathoth awakens. You lose!");
             System.out.println("My word was '" + chooser.getWord() + "'.");
         }
     }

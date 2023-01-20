@@ -1,5 +1,7 @@
 package aoa.guessers;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,6 +10,9 @@ import java.util.Map;
 import static com.google.common.truth.Truth.assertThat;
 
 public class NaiveLetterFreqGuesserTest {
+
+    @Order(1)
+    @DisplayName("NaiveLetterFreqGuesser returns correct frequency map (small input)")
     @Test
     public void testFreqMapSmallFile() {
         NaiveLetterFreqGuesser nlfg = new NaiveLetterFreqGuesser("data/example.txt");
@@ -23,6 +28,8 @@ public class NaiveLetterFreqGuesserTest {
         assertThat(freqMap.get('a')).isEqualTo(3);
     }
 
+    @Order(2)
+    @DisplayName("NaiveLetterFreqGuesser returns correct frequency map (large input)")
     @Test
     public void testFreqMapLargeFile() {
         NaiveLetterFreqGuesser nlfg = new NaiveLetterFreqGuesser("data/sorted_scrabble.txt");
@@ -31,10 +38,12 @@ public class NaiveLetterFreqGuesserTest {
         // y should occur 17,313 times.
         assertThat(freqMap.get('y')).isEqualTo(17313);
 
-        // a should appear 80,227 times.
-        assertThat(freqMap.get('a')).isEqualTo(80227);
+        // a should appear 80,229 times.
+        assertThat(freqMap.get('a')).isEqualTo(80229);
     }
 
+    @Order(3)
+    @DisplayName("NaiveLetterFreqGuesser returns correct guess based on previous guesses")
     @Test
     public void testGetGuess() {
         NaiveLetterFreqGuesser nlfg = new NaiveLetterFreqGuesser("data/example.txt");
