@@ -1,18 +1,20 @@
 package hw0b.basics;
 
 import java.util.List;
-import java.util.Map;
 
 public class ListExercises {
+
+    /** Returns the total sum in a list of integers */
 	public static int sum(List<Integer> L) {
         return 0;
     }
 
+    /** Returns a list containing the even numbers of the given list */
     public static List<Integer> evens(List<Integer> L) {
         return null;
     }
 
-    /** return a list containing the common item of the two given lists */
+    /** Returns a list containing the common item of the two given lists */
     public static List<Integer> common(List<Integer> L1, List<Integer> L2) {
         return null;
     }
