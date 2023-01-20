@@ -1,6 +1,5 @@
 package adventure;
 
-import com.google.common.truth.BooleanSubject;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;
 import helpers.CaptureSystemOutput;
