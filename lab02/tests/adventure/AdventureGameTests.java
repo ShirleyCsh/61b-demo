@@ -1,5 +1,6 @@
 package adventure;
 
+import com.google.common.truth.BooleanSubject;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;
 import helpers.CaptureSystemOutput;
@@ -35,23 +36,24 @@ public class AdventureGameTests {
     @DisplayName("Correct inputs")
     @ValueSource(strings = {"BeeCountingStage", "SpeciesListStage", "PalindromeStage", "MachineStage"})
     public void testStageCorrect(String stage, CaptureSystemOutput.OutputCapture capture) {
-        assertWithMessage("Game output for correct inputs on " + stage + " does not match")
-                .that(runUntilStage(stage, "correctInput.txt", "correctAnswers.txt", capture))
-                .isTrue();
+        runUntilStage(stage, "correctInput.txt", "correctAnswers.txt", capture,
+                "Game output for correct inputs on " + stage + " does not match");
     }
 
     @ParameterizedTest
     @DisplayName("Incorrect inputs")
     @ValueSource(strings = {"BeeCountingStage", "SpeciesListStage", "PalindromeStage", "MachineStage"})
     public void testStageIncorrect(String stage, CaptureSystemOutput.OutputCapture capture) {
-        assertWithMessage("Game output for incorrect inputs on " + stage + " does not match")
-                .that(runUntilStage(stage, "incorrectInput.txt", "incorrectAnswers.txt", capture))
-                .isTrue();
+        runUntilStage(stage, "incorrectInput.txt", "incorrectAnswers.txt", capture,
+                "Game output for incorrect inputs on " + stage + " does not match");
     }
 
 
-    public boolean runUntilStage(String stage, String inputFile, String answersFile,
-                                 CaptureSystemOutput.OutputCapture capture) {
+    /** Runs the adventure game until the given stage with the given input and answer files,
+     *  and asserts with the given assertion message that they match.*/
+    private void runUntilStage(String stage, String inputFile, String answersFile,
+                               CaptureSystemOutput.OutputCapture capture,
+                               String assertionMessage) {
         runTestGame(inputFile);
         String expected = new In(new File(PREFIX_PATH + answersFile)).readAll();
         String expectedClean = expected.replace("\r\n", "\n").strip();
@@ -59,11 +61,17 @@ public class AdventureGameTests {
         int stageEndLine = inputFile.equals("correctInput.txt") ?
                 STAGE_TO_LINE_CORRECT.get(stage) :
                 STAGE_TO_LINE_INCORRECT.get(stage);
-        return Arrays.stream(captureClean.split("\n")).toList().subList(0, stageEndLine)
-                .equals(Arrays.stream(expectedClean.split("\n")).toList().subList(0, stageEndLine));
+        assertWithMessage(assertionMessage)
+                .that(sliceTextFileUntil(captureClean, stageEndLine))
+                .isEqualTo(sliceTextFileUntil(expectedClean, stageEndLine));
     }
 
-    public void runTestGame(String filePath) {
+    /** Returns the text file sliced until the given line. */
+    private String sliceTextFileUntil(String cleaned, int endLine) {
+        return String.join("\n", Arrays.copyOfRange(cleaned.split("\n"), 0, endLine));
+    }
+
+    private void runTestGame(String filePath) {
         In in = new In(new File(PREFIX_PATH + filePath));
         StdRandom.setSeed(1337);
         AdventureGame game = new AdventureGame(in);
