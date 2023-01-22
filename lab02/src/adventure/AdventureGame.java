@@ -43,6 +43,11 @@ public class AdventureGame {
     }
 
     private AdventureStage parseResponse(String response) {
+        // If empty then prompt again
+        if (response.isEmpty()) {
+            return null;
+        }
+
         // First attempt exact match
         if (this.currentStage.getResponses().containsKey(response.toLowerCase())) {
             return this.currentStage.getResponses().get(response.toLowerCase());
