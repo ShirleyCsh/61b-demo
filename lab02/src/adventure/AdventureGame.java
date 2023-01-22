@@ -30,6 +30,10 @@ public class AdventureGame {
     private void handleStage() {
         this.currentStage.playStage();
         System.out.println(this);
+        if (this.currentStage.getResponses().isEmpty()) {
+            this.currentStage = null;
+            return;
+        }
         AdventureStage poss;
         while (true) {
             poss = this.parseResponse(in.readLine());
@@ -68,13 +72,10 @@ public class AdventureGame {
      * Plays until the current stage has no responses, then ends.
      */
     public void play() {
-        while (true) {
+        while (this.currentStage != null) {
             handleStage();
-            if (this.currentStage.getResponses().isEmpty()) {
-                System.out.println("All in another fun day of learning computer science :)");
-                break;
-            }
         }
+        System.out.println("All in another fun day of learning computer science :)");
     }
 
     @Override

@@ -14,7 +14,8 @@ public class PalindromeStage implements AdventureStage {
     public PalindromeStage(In in) {
         this.in = in;
         AdventureStage nextStage = new FillerStage(
-                "Mm, tasty. You hear some people talking about a machine in Soda and decide to check it out.",
+                "Mm, tasty. Briefly, you wonder if free will is an illusion. You hear some people talking " +
+                        "about a machine in Soda and decide to check it out.",
                 Map.of("go", new MachineStage(in))
         );
         this.responses = new TreeMap<>(Map.of(

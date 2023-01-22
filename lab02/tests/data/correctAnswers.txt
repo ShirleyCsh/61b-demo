@@ -35,7 +35,7 @@ room number instead?
 Wow, nice room number!
 Hmm, you're getting hungry. Where do you want to go?
 >> [hearst food court] [va cafe]
-Mm, tasty. You hear some people talking about a machine in Soda and decide to check it out.
+Mm, tasty. Briefly, you wonder if free will is an illusion. You hear some people talking about a machine in Soda and decide to check it out.
 >> [go]
 On the first (zeroth?) floor of Soda, below the labs, you find a mysterious machine.
 It has holes for two lists of ints of the same length, and a third hole that looks
@@ -45,12 +45,14 @@ like it would output a number. The label reads:
 
 ... Huh. You decide to experiment with the machine for a bit.
 
-Enter a list of ints, separated by commas:
-Enter a second list, with the same number of ints:
+Enter a sequence of ints, separated by commas:
+Enter a second sequence, with the same number of ints:
 The machine whirrs briefly before outputting a slip of paper, reading 26
 Does that seem right to you?
 Enter [y] if you want to move on, and anything else to try again.
 Satisfied with your tinkering, you leave the machine behind.
 It's almost time for lecture! How are you attending?
 >> [li ka shing] [zoom]
+You head to Li Ka Shing 245, and sit in your favorite seat.
+
 All in another fun day of learning computer science :)
