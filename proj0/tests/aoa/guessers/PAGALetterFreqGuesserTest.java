@@ -33,16 +33,8 @@ public class PAGALetterFreqGuesserTest {
     public void testGetGuess_o__Pattern() {
         PAGALetterFreqGuesser palfg = new PAGALetterFreqGuesser("data/example.txt");
 
-        // check that the first guess is c, the most common letter in the dictionary if the 2nd letter is o.
+        // check that the first guess is e, the most common letter in the dictionary if the 2nd letter is o.
         char guess = palfg.getGuess("-o--", List.of('o'));
-        assertThat(guess).isEqualTo('c');
-
-        // check that the next guess is d.
-        guess = palfg.getGuess("-o--", List.of('o', 'c'));
-        assertThat(guess).isEqualTo('d');
-
-        // check that the next guess is e, if the previous guessers were d, c, x, o.
-        guess = palfg.getGuess("-o--", List.of('d', 'c', 'x', 'o'));
         assertThat(guess).isEqualTo('e');
     }
 
@@ -64,9 +56,24 @@ public class PAGALetterFreqGuesserTest {
         // check that the next guess is c since two os were found (since the word must be cool)
         guess = palfg.getGuess("-ool", List.of('l', 'a', 'o'));
         assertThat(guess).isEqualTo('c');
+    }
 
-        // check that the next guess is e, if the previous guess were l, a, c, d and the pattern is ---l
-        guess = palfg.getGuess("---l", List.of('l', 'a', 'c', 'd'));
-        assertThat(guess).isEqualTo('o');
+    @Order(4)
+    @DisplayName("PAGALetterFreqGuesser handles -o--a- pattern on large file")
+    @Test
+    public void testGetGuess_o__a_PatternLargeFile() {
+        PAGALetterFreqGuesser palfg = new PAGALetterFreqGuesser("data/sorted_scrabble.txt");
+
+        // check that the next guess is s, if the previous guesses were o and a
+        char guess = palfg.getGuess("-o--a-", List.of('o', 'a'));
+        assertThat(guess).isEqualTo('s');
+
+        // check that the next guess is s, if the previous guesses were o, a, and s
+        guess = palfg.getGuess("-o--a-", List.of('o', 'a', 's'));
+        assertThat(guess).isEqualTo('l');
+
+        // check that the next guess is n, if the previous guesses were o, a, l, and s
+        guess = palfg.getGuess("-o--a-", List.of('o', 'a', 's', 'l'));
+        assertThat(guess).isEqualTo('n');
     }
 }

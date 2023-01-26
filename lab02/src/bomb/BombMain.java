@@ -1,5 +1,7 @@
 package bomb;
 
+import common.IntList;
+
 public class BombMain {
     public static void main(String[] args) {
         int phase = 2;

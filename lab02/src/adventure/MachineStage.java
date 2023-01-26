@@ -5,6 +5,8 @@ import edu.princeton.cs.algs4.In;
 import java.util.Map;
 import java.util.TreeMap;
 
+import static adventure.AdventureUtils.isInt;
+
 public class MachineStage implements AdventureStage {
     private final In in;
     private final Map<String, AdventureStage> responses;
@@ -36,10 +38,11 @@ public class MachineStage implements AdventureStage {
 
         System.out.println(msg);
 
+        outer:
         while (true) {
-            System.out.println("Enter a list of ints, separated by commas:");
+            System.out.println("Enter a sequence of ints, separated by commas:");
             String[] listOne = in.readLine().split("[\\s,]+");
-            System.out.println("Enter a second list, with the same number of ints:");
+            System.out.println("Enter a second sequence, with the same number of ints:");
             String[] listTwo = in.readLine().split("[\\s,]+");
             if (listOne.length != listTwo.length) {
                 System.out.println("The provided lists aren't of the same length!");
@@ -48,6 +51,10 @@ public class MachineStage implements AdventureStage {
             int[] arrOne = new int[listOne.length];
             int[] arrTwo = new int[listTwo.length];
             for (int i = 0; i < listOne.length; i++) {
+                if (!isInt(listOne[i]) || !isInt(listTwo[i])) {
+                    System.out.println("Hmm, are you sure you typed a sequence of integers?");
+                    continue outer; // This is to continue from the while loop rather than the for loop.
+                }
                 arrOne[i] = Integer.parseInt(listOne[i]);
                 arrTwo[i] = Integer.parseInt(listTwo[i]);
             }
