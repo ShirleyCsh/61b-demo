@@ -3,11 +3,8 @@ package adventure;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdRandom;
 import helpers.CaptureSystemOutput;
-import jh61b.grader.AutograderRunner;
-import jh61b.grader.GradedTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Named;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -21,7 +18,7 @@ import static com.google.common.truth.Truth.assertWithMessage;
 
 @CaptureSystemOutput
 public class AdventureGameTests {
-    static final String DATA_PATH = "data/";
+    static final String DATA_PATH = "tests/data/";
     static final Class<?> BEE_CLASS = BeeCountingStage.class;
     static final Class<?> SPECIES_CLASS = SpeciesListStage.class;
     static final Class<?> PALINDROME_CLASS = PalindromeStage.class;
