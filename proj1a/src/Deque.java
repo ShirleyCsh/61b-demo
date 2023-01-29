@@ -40,21 +40,7 @@ public interface Deque<T> {
      * @return the number of items in the deque.
      */
     int size();
-
-    /**
-     * Remove and return the element at the front of the deque, if it exists.
-     *
-     * @return removed element, otherwise {@code null}.
-     */
-    T removeFirst();
-
-    /**
-     * Remove and return the element at the back of the deque, if it exists.
-     *
-     * @return removed element, otherwise {@code null}.
-     */
-    T removeLast();
-
+    
     /**
      * The Deque abstract data type does not typically have a get method,
      * but we've included this extra operation to provide you with some
@@ -74,4 +60,18 @@ public interface Deque<T> {
      * @return element at {@code index} in the deque
      */
     T getRecursive(int index);
+
+    /**
+     * Remove and return the element at the front of the deque, if it exists.
+     *
+     * @return removed element, otherwise {@code null}.
+     */
+    T removeFirst();
+
+    /**
+     * Remove and return the element at the back of the deque, if it exists.
+     *
+     * @return removed element, otherwise {@code null}.
+     */
+    T removeLast();
 }
