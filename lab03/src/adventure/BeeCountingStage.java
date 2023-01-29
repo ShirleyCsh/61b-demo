@@ -6,16 +6,15 @@ import edu.princeton.cs.algs4.StdRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class BeeCountingStage implements AdventureStage {
     private static final int[] SOME_NEAT_NUMBERS = {5, 3, 2, 6, 7};
 
-    private final Scanner in;
+    private final In in;
     private final Map<String, AdventureStage> responses;
     private List<String> input;
 
-    public BeeCountingStage(Scanner in) {
+    public BeeCountingStage(In in) {
         this.in = in;
         this.responses = Map.of("go", new SpeciesListStage(in));
         this.input = new ArrayList<>();
@@ -46,10 +45,10 @@ public class BeeCountingStage implements AdventureStage {
                     }
                 }
                 System.out.println();
-                String input = this.in.nextLine();
+                String input = this.in.readLine();
                 while (!AdventureUtils.isInt(input)) {
                     System.out.println("Please enter a valid integer.");
-                    input = this.in.nextLine();
+                    input = this.in.readLine();
                 }
                 expectedSum += currNum;
                 this.input.add(input);

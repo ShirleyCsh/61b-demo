@@ -2,7 +2,10 @@ package adventure;
 
 import edu.princeton.cs.algs4.In;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class SpeciesListStage implements AdventureStage {
 
@@ -17,10 +20,10 @@ public class SpeciesListStage implements AdventureStage {
     );
     private static final List<String> REFERENCE_3 = new ArrayList<>();
 
-    private final Scanner in;
+    private final In in;
     private final Map<String, AdventureStage> responses;
 
-    public SpeciesListStage(Scanner in) {
+    public SpeciesListStage(In in) {
         this.in = in;
         this.responses = Map.of("go", new PalindromeStage(in));
     }
@@ -66,7 +69,7 @@ public class SpeciesListStage implements AdventureStage {
      */
     private void handleResponses(List<String> reference) {
         while (true) {
-            String input = in.nextLine();
+            String input = in.readLine();
             List<String> user;
             if (input.isEmpty()) {
                 user = new ArrayList<>();

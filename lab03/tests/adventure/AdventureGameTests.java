@@ -11,9 +11,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Scanner;
 import java.util.stream.Stream;
 
 import static com.google.common.truth.Truth.assertWithMessage;
@@ -28,12 +26,12 @@ public class AdventureGameTests {
     static final Class<?> GAME_CLASS = AdventureGame.class;
 
     /** Returns a game starting at the given stage class for the given input file. */
-    private AdventureGame getGameStartingAt(Class<?> stageClass) throws FileNotFoundException {
-        Scanner in = new Scanner(new File(DATA_PATH + stageClass.getSimpleName() + "/input.txt"));
+    private AdventureGame getGameStartingAt(Class<?> stageClass) {
+        In in = new In(new File(DATA_PATH + stageClass.getSimpleName() + "/input.txt"));
         StdRandom.setSeed(1337);
         AdventureStage stage;
         try {
-            stage = (AdventureStage) stageClass.getConstructor(Scanner.class).newInstance(in);
+            stage = (AdventureStage) stageClass.getConstructor(In.class).newInstance(in);
         } catch (InvocationTargetException | InstantiationException |
                  IllegalAccessException | NoSuchMethodException e) {
             throw new RuntimeException(e);
@@ -62,15 +60,15 @@ public class AdventureGameTests {
     @DisplayName("Individual stage tests")
     @ParameterizedTest
     @MethodSource("argumentsForTestStage")
-    public void testStage(Class<?> stage, CaptureSystemOutput.OutputCapture capture) throws FileNotFoundException {
+    public void testStage(Class<?> stage, CaptureSystemOutput.OutputCapture capture) {
         getGameStartingAt(stage).handleStage();
         compareOutputToExpected(stage, capture);
     }
 
     @DisplayName("Integration test with incorrect inputs")
     @Test
-    public void testGame(CaptureSystemOutput.OutputCapture capture) throws FileNotFoundException {
-        Scanner in = new Scanner(new File(DATA_PATH + GAME_CLASS.getSimpleName() + "/input.txt"));
+    public void testGame(CaptureSystemOutput.OutputCapture capture) {
+        In in = new In(new File(DATA_PATH + GAME_CLASS.getSimpleName() + "/input.txt"));
         StdRandom.setSeed(1337);
         AdventureGame game = new AdventureGame(in);
         game.play();

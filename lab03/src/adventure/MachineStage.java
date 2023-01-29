@@ -3,16 +3,15 @@ package adventure;
 import edu.princeton.cs.algs4.In;
 
 import java.util.Map;
-import java.util.Scanner;
 import java.util.TreeMap;
 
 import static adventure.AdventureUtils.isInt;
 
 public class MachineStage implements AdventureStage {
-    private final Scanner in;
+    private final In in;
     private final Map<String, AdventureStage> responses;
 
-    public MachineStage(Scanner in) {
+    public MachineStage(In in) {
         this.in = in;
         this.responses = new TreeMap<>(Map.of(
                 "li ka shing", new FillerStage("You head to Li Ka Shing 245, and sit in your favorite seat."),
@@ -42,9 +41,9 @@ public class MachineStage implements AdventureStage {
         outer:
         while (true) {
             System.out.println("Enter a sequence of ints, separated by commas:");
-            String[] listOne = in.nextLine().split("[\\s,]+");
+            String[] listOne = in.readLine().split("[\\s,]+");
             System.out.println("Enter a second sequence, with the same number of ints:");
-            String[] listTwo = in.nextLine().split("[\\s,]+");
+            String[] listTwo = in.readLine().split("[\\s,]+");
             if (listOne.length != listTwo.length) {
                 System.out.println("The provided lists aren't of the same length!");
                 continue;
@@ -65,7 +64,7 @@ public class MachineStage implements AdventureStage {
             System.out.println("The machine whirrs briefly before outputting a slip of paper, reading " + machineResult);
             System.out.println("Does that seem right to you?");
             System.out.println("Enter [y] if you want to move on, and anything else to try again.");
-            String response = in.nextLine().toLowerCase();
+            String response = in.readLine().toLowerCase();
             if (response.equals("y")) {
                 System.out.println("Satisfied with your tinkering, you leave the machine behind.");
                 break;

@@ -3,14 +3,13 @@ package adventure;
 import edu.princeton.cs.algs4.In;
 
 import java.util.Map;
-import java.util.Scanner;
 
 public class AdventureGame {
 
-    public Scanner in;
+    public In in;
     private AdventureStage currentStage;
 
-    public AdventureGame(Scanner in) {
+    public AdventureGame(In in) {
         this(in, new FillerStage("""
                         It's a wonderful day of learning about computer science! We are going to see so many cool things today!
                         Let's go! (To answer the prompts, type the possibilities in the brackets to go to that choice)"
@@ -20,7 +19,7 @@ public class AdventureGame {
         );
     }
 
-    AdventureGame(Scanner in, AdventureStage firstStage) {
+    AdventureGame(In in, AdventureStage firstStage) {
         this.in = in;
         this.currentStage = firstStage;
     }
@@ -37,7 +36,7 @@ public class AdventureGame {
         }
         AdventureStage poss;
         while (true) {
-            poss = this.parseResponse(in.nextLine());
+            poss = this.parseResponse(in.readLine());
             if (poss != null) {
                 break;
             }
@@ -93,7 +92,7 @@ public class AdventureGame {
     }
 
     public static void main(String[] args) {
-        AdventureGame adventure = new AdventureGame(new Scanner(System.in));
+        AdventureGame adventure = new AdventureGame(new In());
         adventure.play();
     }
 

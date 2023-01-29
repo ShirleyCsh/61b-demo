@@ -4,15 +4,14 @@ import common.IntList;
 import edu.princeton.cs.algs4.In;
 
 import java.util.Map;
-import java.util.Scanner;
 import java.util.TreeMap;
 
 public class PalindromeStage implements AdventureStage {
 
-    private final Scanner in;
+    private final In in;
     private final Map<String, AdventureStage> responses;
 
-    public PalindromeStage(Scanner in) {
+    public PalindromeStage(In in) {
         this.in = in;
         AdventureStage nextStage = new FillerStage(
                 "Mm, tasty. Briefly, you wonder if free will is an illusion. You hear some people talking " +
@@ -34,10 +33,10 @@ public class PalindromeStage implements AdventureStage {
                 (Give a palindromic room number.)
                 """);
         while (true) {
-            String input = in.nextLine();
+            String input = in.readLine();
             while (!AdventureUtils.isInt(input)) {
                 System.out.println("Please enter a valid integer.");
-                input = this.in.nextLine();
+                input = this.in.readLine();
             }
 
             IntList numLst = digitsToIntList(input);
