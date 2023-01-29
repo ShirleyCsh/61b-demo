@@ -58,7 +58,7 @@ public interface Deque<T> {
     /**
      * The Deque abstract data type does not typically have a get method,
      * but we've included this extra operation to provide you with some
-     * extra programming practice. Gets the element, iteratively.Does
+     * extra programming practice. Gets the element, iteratively. Does
      * not alter the deque.
      *
      * @param index index to get, assumes valid index
