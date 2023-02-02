@@ -21,7 +21,7 @@ public interface Deque<T> {
     void addLast(T x);
 
     /**
-     * Returns a List copy of the deque. Does not alter tne deque.
+     * Returns a List copy of the deque. Does not alter the deque.
      *
      * @return a new list copy of the deque.
      */
@@ -40,6 +40,7 @@ public interface Deque<T> {
      * @return the number of items in the deque.
      */
     int size();
+<<<<<<< HEAD
 
     /**
      * Remove and return the element at the front of the deque, if it exists.
@@ -59,6 +60,13 @@ public interface Deque<T> {
      * The Deque abstract data type does not typically have a get method,
      * but we've included this extra operation to provide you with some
      * extra programming practice. Gets the element, iteratively.Does
+=======
+    
+    /**
+     * The Deque abstract data type does not typically have a get method,
+     * but we've included this extra operation to provide you with some
+     * extra programming practice. Gets the element, iteratively. Does
+>>>>>>> 1cffbb2af805e766334823145939a8d83b8d2d9e
      * not alter the deque.
      *
      * @param index index to get, assumes valid index
@@ -74,4 +82,22 @@ public interface Deque<T> {
      * @return element at {@code index} in the deque
      */
     T getRecursive(int index);
+<<<<<<< HEAD
 }
+=======
+
+    /**
+     * Remove and return the element at the front of the deque, if it exists.
+     *
+     * @return removed element, otherwise {@code null}.
+     */
+    T removeFirst();
+
+    /**
+     * Remove and return the element at the back of the deque, if it exists.
+     *
+     * @return removed element, otherwise {@code null}.
+     */
+    T removeLast();
+}
+>>>>>>> 1cffbb2af805e766334823145939a8d83b8d2d9e
