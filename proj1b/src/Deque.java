@@ -61,7 +61,7 @@ public interface Deque<T> {
      * extra programming practice. Gets the element, iteratively. Does
      * not alter the deque.
      *
-     * @param index index to get, assumes valid index
+     * @param index index to get, return null if index is not valid
      * @return element at {@code index} in the deque
      */
     T get(int index);
