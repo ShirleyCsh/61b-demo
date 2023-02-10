@@ -21,7 +21,7 @@ public interface Deque<T> {
     void addLast(T x);
 
     /**
-     * Returns a List copy of the deque. Does not alter tne deque.
+     * Returns a List copy of the deque. Does not alter the deque.
      *
      * @return a new list copy of the deque.
      */
@@ -58,20 +58,11 @@ public interface Deque<T> {
     /**
      * The Deque abstract data type does not typically have a get method,
      * but we've included this extra operation to provide you with some
-     * extra programming practice. Gets the element, iteratively.Does
+     * extra programming practice. Gets the element, iteratively. Does
      * not alter the deque.
      *
-     * @param index index to get, assumes valid index
+     * @param index index to get, return null if index is not valid
      * @return element at {@code index} in the deque
      */
     T get(int index);
-
-    /**
-     * This method technically shouldn't be in the interface, but it's here
-     * to make testing nice. Gets an element, recursively.
-     *
-     * @param index index to get, assumes valid index
-     * @return element at {@code index} in the deque
-     */
-    T getRecursive(int index);
 }
