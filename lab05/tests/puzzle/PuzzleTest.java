@@ -34,7 +34,7 @@ public class PuzzleTest {
         int secret = Puzzle.loadAnswer(SECRET_FILE);
         assertWithMessage("Wrong secret! Use watches or the expression evaluator " +
                 "to find out what the correct value should be!")
-                .that(secret).isEqualTo(fileContents.hashCode() + 1337);
+                .that(secret == (fileContents.hashCode() + 1337)).isTrue();
     }
 
     /** Read all lines of a file into a string list, trimming whitespace. */
