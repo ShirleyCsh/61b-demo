@@ -1,16 +1,17 @@
 package ngordnet.ngrams;
 
-import org.junit.Test;
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.google.common.truth.Truth.assertThat;
+
 /** Unit Tests for the TimeSeries class.
  *  @author Josh Hug
  */
-public class TestTimeSeries {
+public class TimeSeriesTest {
     @Test
     public void testFromSpec() {
         TimeSeries catPopulation = new TimeSeries();
@@ -31,13 +32,13 @@ public class TestTimeSeries {
         List<Integer> expectedYears = new ArrayList<>
                 (Arrays.asList(1991, 1992, 1994, 1995));
 
-        assertEquals(expectedYears, totalPopulation.years());
+        assertThat(totalPopulation.years()).isEqualTo(expectedYears);
 
         List<Double> expectedTotal = new ArrayList<>
                 (Arrays.asList(0.0, 100.0, 600.0, 500.0));
 
         for (int i = 0; i < expectedTotal.size(); i += 1) {
-            assertEquals(expectedTotal.get(i), totalPopulation.data().get(i), 1E-10);
+            assertThat(totalPopulation.data().get(i)).isWithin(1E-10).of(expectedTotal.get(i));
         }
     }
 } 
