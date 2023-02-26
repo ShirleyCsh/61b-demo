@@ -95,18 +95,16 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     private T getItemRecursive(Node front, int index) {
-        if (index == 0) {
+        if(index == 0) {
             return front.value;
-        } else {
-            return getItemRecursive(front.next, index - 1);
         }
+        return getItemRecursive(front.next, index - 1);
     }
 
     public T getRecursive(int index) {
-        if ((index > size) || (index < 0)) {
+        if(index >= size || index < 0) {
             return null;
         }
-
         return getItemRecursive(sentinel.next, index);
     }
 

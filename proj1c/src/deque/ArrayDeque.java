@@ -101,13 +101,13 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
 
     private void resize(int newLength) {
-        T[] newItems = (T[]) new Object[newLength];
-        for (int i = 0; i < size; i += 1) {
-            newItems[i] = get(i);
+        T[] newArr = (T[]) new Object[newLength];
+        for(int i = 0; i < size; i++) {
+            newArr[i] = get(i);
         }
         nextFirst = newLength - 1;
-        nextLast = size;
-        items = newItems;
+        nextLast = size + 1;
+        items = newArr;
     }
 
     @Override
